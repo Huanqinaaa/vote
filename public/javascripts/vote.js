@@ -64,7 +64,7 @@ $(document).ready(function($) {
 	                + '<span>|</span>'
 	                + '<span>编号#' + objs[i].id + '</span>'
 	                + '</div>'
-	                + '<p>' + objs[i].descrption + '</p>'
+	                + '<p>' + objs[i].description + '</p>'
 	                + '</a>'
 	                + '</div>'
 	               	+ '</li>';
@@ -94,7 +94,7 @@ $(document).ready(function($) {
 					+'</div>'
 				    +'</div>'
 				    +'<div class="motto">'
-					+'' + obj.descrption + ''
+					+'' + obj.description + ''
 					+'</div>';
 			return str;
 		},
@@ -270,7 +270,7 @@ $(document).ready(function($) {
 		getRegisterData: function() {
 			var username = $('.username').val();
 			var mobile = $('.mobile').val();
-			var descrption = $('.descrption').val();
+			var description = $('.description').val();
 			var password = $('.initial_password').attr('pword');
 			var gender = "";
 			$('.gender input').each(function(index, el) {
@@ -286,14 +286,14 @@ $(document).ready(function($) {
 				alert("请填写正确格式的手机号码");
 				return false;
 			}
-			if(!descrption) {
+			if(!description) {
 				alert("请填写自我描述内容");
 				return false;
 			}
 			return {
 				username: username,
 				mobile: mobile,
-				descrption: descrption,
+				description: description,
 				gender: gender,
 				password: password
 			}
