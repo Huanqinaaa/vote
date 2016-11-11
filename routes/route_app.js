@@ -8,9 +8,39 @@ let dealFn = require('./dealfn.js');
 let database = null;
 let maxVoteTimes = 5;
 
+function addTestUser(num) {
+    let total = database.data.total;
+    for (var i=0; i<num; i++) {
+        let user = {
+                        "username": "user",
+                        "mobile": "18289742007",
+                        "description": "hello",
+                        "gender": "boy",
+                        "password": "123",
+                        "head_icon": "/images/boy.png",
+                        "id": 0,
+                        "vote": 0,
+                        "rank": 0,
+                        "vote_times": 0,
+                        "vfriend": []
+                    }
+        database.data.total++;
+        user.id = ++total;
+        user.username = 'test' + (i + 1);
+        database.data.objects.push(user);
+    }
+    database.data.objects = dealFn.sortRank(database.data.objects);
+    dealFn.writeFileData('database.json', database).then((msg) => {
+        console.log(msg);
+    }, (msg) => {
+        console.log(msg);
+    });
+}
+
 dealFn.readFileData('database.json').then((data) => {
     database = data;
     database.data.total = database.data.objects.length;
+    // addTestUser(100);
 }, (msg) => {
     console.log(msg);
 })
