@@ -118,8 +118,8 @@
 	sendData:  {
 			       username: {用户名},
 				   mobile: {手机号码},
-				   descrption: {描述},
-				   gender: {性别},
+				   description: {描述},
+				   gender: {性别, 男：'boy', 女：'girl'},
 				   password: {用户密码}
 			   }
 	返回数据：errno为0，数据正确		

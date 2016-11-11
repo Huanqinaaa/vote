@@ -105,7 +105,7 @@ exports.index_poll = (req, res) => {
             return;
         }
     }
-    if(voter.vote_times > maxVoteTimes) {
+    if(voter.vote_times >= maxVoteTimes) {
         sendData.errno = '-2';
         sendData.msg = '每个人最多能投5票，您已经使用完了';
         res.send(JSON.stringify(sendData));
