@@ -11,9 +11,22 @@
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
-    "express": "~4.13.1",
+    "express": "^4.13.4",
     "iconv-lite": "^0.4.13",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "description": "* 基于nodejs && express的后台服务\r * 基于zepto的前端网页构建\r * 前后数据分离",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CanFoo/vote.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CanFoo/vote/issues"
+  },
+  "homepage": "https://github.com/CanFoo/vote#readme"
 }

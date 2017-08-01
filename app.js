@@ -3,16 +3,16 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');// 处理请求体，把请求体放在了req.body
 
 var routes = require('./routes/route_app');
 
 var app = express();
 var ejs = require('ejs');
 
-// view engine setup
+// view engine setup 设置模板存放目录
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // 设置模板引擎
 
 
 app.engine('.html', ejs.__express);
@@ -20,10 +20,11 @@ app.set('view engine', 'html');// app.set('view engine', 'ejs');
 
 
 // uncomment after placing your favicon in /public
+// use 中间件
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(logger('dev')); // 打印访问日志
+app.use(bodyParser.json()); // 处理请求体为json的
+app.use(bodyParser.urlencoded({ extended: false })); // 序列化表单格式的
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -44,7 +45,7 @@ app.post(/\/vote\/register\/data/, routes.register_data);
 app.post('/vote/index/info', routes.index_info);
 
 
-// catch 404 and forward to error handler
+// catch 404 and forward to error handler 捕获404错误，并且转向错误处理中间件
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;

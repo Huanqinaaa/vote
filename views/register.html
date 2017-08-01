@@ -55,4 +55,163 @@
 <script src="/javascripts/prefixfree.min.js"></script>
 <script src="/javascripts/zepto.min.js"></script>
 <script src="/javascripts/vote.js"></script>
+<script>
+	var ary = [1,"qin","huan",89];
+	var res = ary.map(function (item,index){
+		console.log(arguments[0]);
+//		console.log(arguments.callee);
+		return item + index;
+	});
+	console.log(res);
+	var res1 = ary.forEach(function (item,index){
+		console.log(arguments[0]);
+//		console.log(arguments.callee);
+		return item + index;
+	});
+	console.log(res1);
+
+	console.log(arr);
+	if(arr){
+		var arr = [2];
+		console.log(arr)
+	}
+
+	var num = 12;
+	var obj = {
+		num : 3,
+		fn: (function (num) {
+			num += 2; //5
+			this.num += 3;//15
+//			console.log(num);
+			num = 8;//
+			return function () {
+				num -= 1;//7 6
+//				console.log(num);
+				this.num -= 1;//14  2
+				console.log(this);
+				console.log(num);//
+			}
+		})(num)
+	};
+	var f = obj.fn;
+	f(); //
+	obj.fn();//
+	console.log(num,obj.num);//
+
+	function fn (n,m){
+		console.log(this);
+		console.log(n + m);
+	}
+	var obj = {age:78};
+	var res = fn.bind(obj);
+	console.log(res);
+	res(200,30);
+
+	console.log(new Date);
+
+	/*alert("提示");
+	confirm("确认");
+	prompt("输入信息");*/
+
+	// 单例模式,可以解决函数名字命名冲突的问题
+	var qinhuan = {
+		copy: function fn() {
+			console.log("qin");
+		},
+		edit: function fn() {
+			console.log(this);
+			this.copy();
+		}
+	};
+	qinhuan.edit();
+
+	// 工厂模式：就是一个函数，又叫函数的封装
+	function Table (width,height){
+		var table = {};
+		table.width = width;
+		table.height = height;
+		table.computer = function () {		};
+		return table;
+	}
+	var table1 = Table(100,200);
+	console.log(table1);
+
+	console.log([2] instanceof Array);
+	console.log({name:"qin"} instanceof Object);
+
+	var ary = [{age:30,name:"tian"},{age:20,name:"qinhuan"},{age:28,name:"huan"}];
+	/*ary.sort(function (a,b){
+		return a.age - b.age;
+	});*/
+	ary.sort(function(a,b){
+		return a.name.localeCompare(b.name);
+	});
+	console.log(ary);
+
+	// 构造函数
+	function Fn(){
+		this.x = 400;
+		this.y = 100;
+	}
+	Fn.prototype.getX = function () {
+		console.log(this.x);
+	};
+	var f1 = new Fn();
+	f1.getX(); // 400
+
+	// "use strict" 使用严格模式
+
+
+	function Animal(){
+		this.name = "Animal";
+		this.showName = function(){
+			alert(this.name);
+		}
+	}
+	function Cat(){
+		this.name = "Cat";
+	}
+	var animal = new Animal();
+	var cat = new Cat();
+
+	//通过call或apply方法，将原本属于Animal对象的showName()方法交给对象cat来使用了。
+	//输入结果为"Cat"
+//	animal.showName.call(cat,",");// Cat
+	animal.showName.apply(cat,[]); // Cat
+
+	// 数组去重
+	Array.prototype.myUnique = function () {
+		var obj = {};
+		for(var i=0;i<this.length;i++){
+			var cur = this[i];
+			if(obj[cur]==cur){
+				this[i]=this[this.length - 1];
+				this.length -- ;
+				i --;
+				continue;
+			}else{
+				obj[cur]=cur;
+			}
+		}
+		obj = null;
+		return this;
+	};
+	var ary = [1,1,1,2,5,9,5];
+	ary.myUnique();
+	console.log(ary);
+    console.log(ary.constructor);
+
+
+</script>
+<script>
+	"use strict";
+	function f2(){
+		console.log(this);
+	}
+	f2.call(null);// Window
+	f2.call(undefined);// Window
+	f2.call(true); // Boolean
+	f2.call(8); // Number
+	f2.call({name:"qinhuan"});// {name:"qinhuan"}
+</script>
 </html>

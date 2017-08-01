@@ -290,6 +290,7 @@ $(document).ready(function($) {
 				alert("请填写自我描述内容");
 				return false;
 			}
+			$("input[type=radio]").checked ? gender = "boy" : gender = "girl";
 			return {
 				username: username,
 				mobile: mobile,
@@ -424,7 +425,7 @@ $(document).ready(function($) {
 							username: registerData.username,
 							password: registerData.password,
 							id: id
-						}
+						};
 						voteFn.setStorage('voteUser', voteUser);
 						alert(data.msg);
 						window.location = reg.exec(url)[1] + 'index';
@@ -475,3 +476,5 @@ $(document).ready(function($) {
 		});
 	}
 });
+
+
